@@ -36,7 +36,7 @@ jobs:
             aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
             aws-region: ${{needs.env.outputs.region}}
         - name: Set up Nodejs
-        - uses: actions/setup-node@v2-beta
+          uses: actions/setup-node@v2-beta
           with:
             node-version: '12'
         - name: Serverless Deploy
