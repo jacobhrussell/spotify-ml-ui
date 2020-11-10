@@ -39,10 +39,12 @@ jobs:
           uses: actions/setup-node@v2-beta
           with:
             node-version: '12'
+        - name: Install node modules
+          run: npm install
         - name: Serverless Deploy
           uses: serverless/github-action@v1.53.0
           with:
-            args: -c "serverless plugin install serverless-single-page-app-plugin && serverless deploy --stage ${{needs.env.outputs.environment}} && serverless syncToS3"
+            args: -c "serverless deploy --stage ${{needs.env.outputs.environment}} && serverless syncToS3"
             entrypoint: /bin/bash
           env:
             environment: ${{needs.env.outputs.environment}}
