@@ -6,7 +6,7 @@ plugins:
   - serverless-single-page-app-plugin
 
 custom:
-  s3Bucket: jhrSpotifyMlBucket
+  s3Bucket: {env:environment}-spotify-ml-ui-bucket
 
 provider:
   name: aws
