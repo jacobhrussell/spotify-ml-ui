@@ -41,6 +41,8 @@ jobs:
             node-version: '12'
         - name: Install node modules
           run: npm install
+        - name: Install AWS CLI
+          uses: chrislennon/action-aws-cli@v1.1
         - name: Serverless Deploy
           uses: serverless/github-action@v1.53.0
           with:
