@@ -53,7 +53,5 @@ jobs:
             SPOTIPY_CLIENT_ID: ${{secrets.SPOTIPY_CLIENT_ID}}
             SPOTIPY_CLIENT_SECRET: ${{secrets.SPOTIPY_CLIENT_SECRET}}
             SPOTIPY_REDIRECT_URI: ${{secrets.SPOTIPY_REDIRECT_URI}}
-        - name: Build static files
-          run: npm run build --prod
-        - name: Deploy static files to S3
-          run: aws s3 sync dist/ s3://${{needs.env.outputs.environment}}-spotify-ml-ui-bucket
+        - name: Build static files and deploy to S3
+          run: npm run build --prod && aws s3 sync dist/ s3://${{needs.env.outputs.environment}}-spotify-ml-ui-bucket
