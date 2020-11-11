@@ -18,8 +18,8 @@ resources:
         BucketName: ${self:custom.s3Bucket}
         AccessControl: PublicRead
         WebsiteConfiguration:
-          IndexDocument: spotify-ml-ui/index.htmlindex.html
-          ErrorDocument: spotify-ml-ui/index.htmlindex.html
+          IndexDocument: index.html
+          ErrorDocument: index.html
     ## Specifying the policies to make sure all files inside the Bucket are avaialble to CloudFront
     WebAppS3BucketPolicy:
       Type: AWS::S3::BucketPolicy
@@ -54,13 +54,13 @@ resources:
           ## Uncomment the following section in case you are using a custom domain
           # Aliases:
           # - mysite.example.com
-          DefaultRootObject: /spotify-ml-ui/index.html
+          DefaultRootObject: index.html
           ## Since the Single Page App is taking care of the routing we need to make sure ever path is served with index.html
           ## The only exception are files that actually exist e.h. app.js, reset.css
           CustomErrorResponses:
             - ErrorCode: 404
               ResponseCode: 200
-              ResponsePagePath: /spotify-ml-ui/index.html
+              ResponsePagePath: /index.html
           DefaultCacheBehavior:
             AllowedMethods:
               - DELETE
